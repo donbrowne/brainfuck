@@ -8,17 +8,15 @@
 #include <memory>
 #include <vector>
 
-class State {
+class AbstractMachine {
 private:
     std::unique_ptr<std::vector<unsigned char> > tape;
     size_t index;
     size_t size;
 public:
-    State(size_t tape_length);
-    ~State() {};
+    AbstractMachine(size_t tape_length);
+    ~AbstractMachine() {};
 
-    size_t get_size();
-    size_t get_index();
     void next();
     void prev();
     void write(unsigned char val);

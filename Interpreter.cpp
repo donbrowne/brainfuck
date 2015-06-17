@@ -3,23 +3,19 @@
 //
 
 #include <iostream>
-#include "Program.h"
+#include "Interpreter.h"
 
-Program::Program(size_t state_size) {
+Interpreter::Interpreter(size_t state_size) {
     pc = 0;
     program = "";
     state = std::unique_ptr<State>(new State(state_size));
 }
 
-void Program::add_to_program(std::string fragment) {
+void Interpreter::add_to_program(std::string fragment) {
     program += fragment;
 }
 
-void Program::reset() {
-    pc = 0;
-}
-
-void Program::execute() {
+void Interpreter::execute() {
     size_t len = program.length();
     for (; pc < len; pc++) {
         switch (program[pc]) {

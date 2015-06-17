@@ -7,21 +7,20 @@
 
 #include <stack>
 #include <string>
-#include "State.h"
+#include "AbstractMachine.h"
 
-class Program {
+class Interpreter {
 private:
     size_t pc;
     std::stack<size_t> jump_stack;
     std::string program;
     std::unique_ptr<State> state;
 public:
-    Program(size_t state_size);
-    ~Program() {};
+    Interpreter(size_t state_size);
+    ~Interpreter() {};
 
     void add_to_program(std::string fragment);
     void execute();
-    void reset();
 };
 
 #endif //BF_PROGRAM_H
